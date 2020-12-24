@@ -1,0 +1,111 @@
+@font-face {
+  font-family: "wotfard";
+  src: url("./Wotfard/wotfard-bold-webfont.eot");
+  src: url("./Wotfard/wotfard-bold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Wotfard/wotfard-bold-webfont.woff2") format("woff2"),
+    url("./Wotfard/wotfard-bold-webfont.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "wotfard";
+  src: url("./Wotfard/wotfard-extralight-webfont.eot");
+  src: url("./Wotfard/wotfard-extralight-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Wotfard/wotfard-extralight-webfont.woff2") format("woff2"),
+    url("./Wotfard/wotfard-extralight-webfont.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "wotfard";
+  src: url("./Wotfard/wotfard-light-webfont.eot");
+  src: url("./Wotfard/wotfard-light-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Wotfard/wotfard-light-webfont.woff2") format("woff2"),
+    url("./Wotfard/wotfard-light-webfont.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "wotfard";
+  src: url("./Wotfard/wotfard-medium-webfont.eot");
+  src: url("./Wotfard/wotfard-medium-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Wotfard/wotfard-medium-webfont.woff2") format("woff2"),
+    url("./Wotfard/wotfard-medium-webfont.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "wotfard";
+  src: url("./Wotfard/wotfard-regular-webfont.eot");
+  src: url("./Wotfard/wotfard-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Wotfard/wotfard-regular-webfont.woff2") format("woff2"),
+    url("./Wotfard/wotfard-regular-webfont.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "wotfard";
+  src: url("./Wotfard/wotfard-semibold-webfont.eot");
+  src: url("./Wotfard/wotfard-semibold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Wotfard/wotfard-semibold-webfont.woff2") format("woff2"),
+    url("./Wotfard/wotfard-semibold-webfont.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "wotfard";
+  src: url("./Wotfard/wotfard-thin-webfont.eot");
+  src: url("./Wotfard/wotfard-thin-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Wotfard/wotfard-thin-webfont.woff2") format("woff2"),
+    url("./Wotfard/wotfard-thin-webfont.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "argesta";
+  src: url("./Argesta/argestatext-bold-webfont.eot");
+  src: url("./Argesta/argestatext-bold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Argesta/argestatext-bold-webfont.woff2") format("woff2"),
+    url("./Argesta/argestatext-bold-webfont.woff") format("woff"),
+    url("./Argesta/argestatext-bold-webfont.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "argesta";
+  src: url("./Argesta/argestatext-regular-webfont.eot");
+  src: url("./Argesta/argestatext-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Argesta/argestatext-regular-webfont.woff2") format("woff2"),
+    url("./Argesta/argestatext-regular-webfont.woff") format("woff"),
+    url("./Argesta/argestatext-regular-webfont.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "argesta-headline";
+  src: url("./Argesta/argestaheadline-regular-webfont.eot");
+  src: url("./Argesta/argestaheadline-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./Argesta/argestaheadline-regular-webfont.woff2") format("woff2"),
+    url("./Argesta/argestaheadline-regular-webfont.woff") format("woff"),
+    url("./Argesta/argestaheadline-regular-webfont.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
