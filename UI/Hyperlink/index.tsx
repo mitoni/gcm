@@ -3,21 +3,43 @@ import Link from "next/link";
 import { useRecoilState } from "recoil";
 import { mouseAtom } from "../../recoil/atoms";
 
-const index = ({ children, href, className = "" }: IProps) => {
+const index = ({
+  children,
+  className,
+  href,
+  underline = false,
+  ...rest
+}: IProps) => {
   const [mouse, setMouse] = useRecoilState(mouseAtom);
-  const handleMouseMove = (e: React.MouseEvent) => {
+
+  const handleMouseMove = () => {
     if (!mouse.active) setMouse((m) => ({ ...m, active: true }));
   };
-  const handleMouseOut = (e: React.MouseEvent) => {
+  const handleMouseOut = () => {
     if (mouse.active) setMouse((m) => ({ ...m, active: false }));
   };
+
+  if (!href)
+    return (
+      <a
+        onMouseMove={handleMouseMove}
+        onMouseOut={handleMouseOut}
+        className={`${className} ${
+          underline && "border-b border-black"
+        } cursor-pointer`}
+        {...rest}
+      >
+        {children}
+      </a>
+    );
 
   return (
     <Link href={href} passHref>
       <a
         onMouseMove={handleMouseMove}
         onMouseOut={handleMouseOut}
-        className={`${className}`}
+        className={`${className} ${underline && "border-b border-black"}`}
+        {...rest}
       >
         {children}
       </a>
@@ -27,8 +49,6 @@ const index = ({ children, href, className = "" }: IProps) => {
 
 export default index;
 
-interface IProps {
-  children: JSX.Element;
-  href: string;
-  className?: string;
+interface IProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  underline?: boolean;
 }

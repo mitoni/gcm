@@ -4,11 +4,11 @@ const index = ({
   children,
   className,
   ...rest
-}: React.HTMLAttributes<HTMLHeadingElement>) => {
+}: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <h2 {...rest} className={`${className} font-headline text-6xl mb-2`}>
+    <span {...rest} className={`${className} font-semibold`}>
       {children}
-    </h2>
+    </span>
   );
 };
 

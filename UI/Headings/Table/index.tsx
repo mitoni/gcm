@@ -4,11 +4,11 @@ const index = ({
   children,
   className,
   ...rest
-}: React.HTMLAttributes<HTMLHeadingElement>) => {
+}: React.HTMLAttributes<HTMLTableElement>) => {
   return (
-    <h2 {...rest} className={`${className} font-headline text-6xl mb-2`}>
+    <table {...rest} className={`${className} table-auto w-full`}>
       {children}
-    </h2>
+    </table>
   );
 };
 

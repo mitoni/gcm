@@ -1,42 +1,63 @@
-import { useRouter } from "next/router";
 import React from "react";
-import useSWR from "swr";
 import Cover from "../../components/Cover";
-import Row from "../../layouts/Row";
+import Section from "../../components/Section";
 import { getData } from "../../lib/graphcms";
-import { getNameFromPath } from "../../lib/utils";
+import { getLocales, getNameFromPath } from "../../lib/utils";
+import { gql } from "graphql-request";
+import { GetServerSideProps } from "next";
 
-const _projectId_ = () => {
-  const { asPath } = useRouter();
-  const projectId = getNameFromPath(asPath.split(/\//).reverse()[0]);
-
-  const { data: project } = useSWR(
-    `
-    query MyQuery {
-      projects(where: { name: "${projectId}"}) {
-        name
-        description
-        categories {
-          color {
-            css
-          }
-          name
-        }
-        cover {
-          url
-        }
-        id
-      }
-    }
-  `,
-    getData
-  );
-
+const _projectId_ = ({ project }) => {
   return (
-    <Row>
+    <React.Fragment>
       <Cover project={project} />
-    </Row>
+      {project?.sections?.map((s: any, i: number) => (
+        <Section key={i} section={s} categories={project.categories} />
+      ))}
+    </React.Fragment>
   );
 };
 
 export default _projectId_;
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const projectId = ctx.params.projectId as string;
+
+  const _projectId = getNameFromPath(projectId.split(/\//).reverse()[0]);
+
+  const { projects } = await getData(gql`
+  query MyQuery {
+    projects(where: { name: "${_projectId}"} locales: ${getLocales(ctx)}) {
+      id
+      name
+      description
+      year {
+        name
+      }
+      categories {
+        color {
+          css
+        }
+        name
+      }
+      cover {
+        url
+      }
+      sections {
+        title
+        image {
+          url
+        }
+        imageCaption
+        content {
+          html
+        }
+      }
+    }
+  }
+  `);
+  return {
+    props: {
+      project: projects[0],
+    },
+  };
+};

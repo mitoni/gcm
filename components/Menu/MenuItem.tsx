@@ -13,7 +13,7 @@ const MenuItem = ({ children, path }: IProps) => {
       }}
     >
       <div
-        className={`absolute border border-black h-full w-full transition-transform ease-in-out-back origin-top duration-500 transform ${
+        className={`absolute border border-black h-full w-full pointer-events-none transition-transform ease-in-out-back origin-left duration-500 transform ${
           current === path ? "scale-100" : "scale-0"
         }`}
       />

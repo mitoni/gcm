@@ -1,75 +1,42 @@
-import React, { useRef, useState } from "react";
-import useSWR from "swr";
-import { getData } from "../../lib/graphcms";
+import React, { useEffect, useRef, useState } from "react";
 import Row from "../../layouts/Row";
 import Col from "../../layouts/Col";
-import FormatHTML from "../FormatHTML";
 import { pickRandom } from "../../lib/utils";
 import Bubble from "./Bubble";
 import Description from "./Description";
+import { Events, listen, unlisten } from "../../lib/signals";
 
-const index = () => {
+const index = ({ projects, homepage }: IProps) => {
   const canvas = useRef<HTMLDivElement>(null);
   const [displayProjects, setDisplayProjects] = useState([]);
-  const { data: projects } = useSWR(
-    `
-    query MyQuery {
-      projects {
-        categories {
-          color {
-            css
-          }
-        }
-        name
-        description
-        cover {
-          url
-        }
-      }
-    }
-  `,
-    getData
-  );
 
-  const { data: homepage } = useSWR(
-    `
-      query MyQuery {
-        pages (where: {name: "homepage"}) {
-          text {
-            html
-          }
-          cover {
-            url
-          }
-        }
-      }
-    `,
-    getData
-  );
-
-  const handleMouseOver = (e: React.MouseEvent) => {
+  const addProject = () => {
     setDisplayProjects((dp) => [...dp, pickRandom(projects)]);
   };
 
+  useEffect(() => {
+    listen(Events.ADD_PROJECT, addProject);
+    return () => {
+      unlisten(Events.ADD_PROJECT, addProject);
+    };
+  }, []);
+
   return (
-    <Row>
+    <Row className="h-screen">
       <div
         ref={canvas}
-        className="absolute overflow-hidden pointer-events-none top-0 left-0 w-screen h-screen"
+        className="absolute w-full h-full overflow-hidden pointer-events-none top-0 left-0"
       >
         {displayProjects.map((dp, i) => (
           <Bubble key={i} project={dp} />
         ))}
       </div>
-      <Col className="justify-center items-center">
-        <div onMouseOver={handleMouseOver}>
-          <FormatHTML html={homepage?.text.html} />
-        </div>
+      <Col>
+        <Description homepage={homepage} />
       </Col>
       <Col>
-        <Description />
         <img
-          className="w-full h-full object-contain"
+          className="z-0 w-full h-full max-h-screen object-contain"
           src={homepage?.cover.url}
         />
       </Col>
@@ -78,3 +45,8 @@ const index = () => {
 };
 
 export default index;
+
+interface IProps {
+  projects: any[];
+  homepage: any;
+}

@@ -1,17 +1,15 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 
-const index = ({ children, className = "", style }: IProps) => {
+const index = ({
+  children,
+  className,
+  ...rest
+}: React.HTMLAttributes<HTMLHeadingElement>) => {
   return (
-    <h1 style={style} className={`${className} font-semibold text-5xl mb-4`}>
+    <h1 {...rest} className={`${className} font-semibold text-5xl mb-4`}>
       {children}
     </h1>
   );
 };
 
 export default index;
-
-interface IProps {
-  children: string;
-  className?: string;
-  style?: CSSProperties;
-}

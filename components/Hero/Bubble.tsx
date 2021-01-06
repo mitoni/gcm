@@ -1,72 +1,81 @@
+import anime, { AnimeTimelineInstance } from "animejs";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { execute } from "../../lib/signals";
 import { getPathFromName } from "../../lib/utils";
 
 const Bubble = ({ project }) => {
-  const RAF = useRef<number>();
-  const now = useRef<number>(Date.now());
+  const anim = useRef<AnimeTimelineInstance>(null);
   const target = useRef<HTMLAnchorElement>(null);
-  const [{ y, x }, setPosition] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0);
-
-  const animate = () => {
-    const _now = Date.now();
-    if (_now - now.current > 500) {
-      setPosition((p) => ({
-        x: p.x + Math.round((Math.random() * 50 - 25) * 1000) / 1000,
-        y: p.y + Math.round((Math.random() * 50 - 25) * 1000) / 1000,
-      }));
-      now.current = _now;
-    }
-    RAF.current = requestAnimationFrame(animate);
-  };
+  const mult = useRef<number>(Math.random());
 
   useEffect(() => {
-    target.current.style.top = `${window.innerHeight * Math.random()}px`;
-    target.current.style.left = `${window.innerWidth * Math.random()}px`;
-    RAF.current = requestAnimationFrame(animate);
-    setTimeout(() => {
-      setOpacity(0.75);
-    }, 100);
-    return () => {
-      cancelAnimationFrame(RAF.current);
-    };
+    target.current.style.top = `${
+      (window.innerHeight - 200) * Math.random() + 100
+    }px`;
+    target.current.style.left = `${
+      (window.innerWidth - 200) * Math.random() + 100
+    }px`;
+
+    anim.current = anime.timeline().add({
+      targets: target.current,
+      scale: [0, 1],
+      opacity: [0, 1],
+      duration: 500,
+      easing: "easeInOutQuad",
+    });
   }, []);
 
   const handleMouseEnter = () => {
-    execute.setProjectTitle(project.name);
-    execute.setProjectDescription(project.description);
-    setOpacity(1);
-    cancelAnimationFrame(RAF.current);
+    anim.current && anim.current.pause();
+    anim.current = anime.timeline().add({
+      targets: target.current,
+      scale: [1, 1.2],
+      duration: 250,
+      easing: "easeInOutQuad",
+    });
+    execute.setProjectHome(project.name, project.description);
   };
 
   const handleMouseLeave = () => {
-    execute.setProjectTitle(null);
-    execute.setProjectDescription(null);
-    setOpacity(0.75);
-    requestAnimationFrame(animate);
+    anim.current && anim.current.pause();
+    execute.setProjectHome(null);
+    anim.current = anime.timeline().add({
+      targets: target.current,
+      scale: [1.2, 0.8],
+      opacity: [1, 0],
+      duration: 500,
+      easing: "easeInOutQuad",
+      begin: () => (target.current.style.pointerEvents = "none"),
+      complete: () => {
+        if (target.current) target.current.style.visibility = "hidden";
+      },
+    });
   };
 
   return (
     <Link href={`/what-I-do/${getPathFromName(project?.name)}`}>
       <a
         ref={target}
-        className="pointer-events-auto transition duration-500 ease-linear"
-        style={{
-          position: "absolute",
-          transform: `translate(${x}px, ${y}px)`,
-          opacity: opacity,
-          zIndex: 9,
-        }}
+        className="absolute pointer-events-auto z-10 opacity-0"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div
-          className="w-24 h-24 shadow-xl rounded-full"
+          className="rounded-full"
           style={{
+            height: `${mult.current * 40 + 80}px`,
+            width: `${mult.current * 40 + 80}px`,
             backgroundImage: `url(${project?.cover?.url})`,
             backgroundSize: "cover",
+            filter: project?.categories.reduce(
+              (acc: string, curr, i: number) => {
+                const col = curr.color.css;
+                acc += `drop-shadow(${i + 3}px ${i + 3}px 0px ${col}) `;
+                return acc;
+              },
+              ""
+            ),
           }}
         />
       </a>

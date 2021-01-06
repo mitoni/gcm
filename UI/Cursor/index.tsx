@@ -4,13 +4,17 @@ import { mouseAtom } from "../../recoil/atoms";
 
 const index = () => {
   const [mouse, setMouse] = useRecoilState(mouseAtom);
+
   const handleMouseMove = (e: MouseEvent) => {
+    if (!mouse.active) return;
     setMouse((m) => ({ ...m, x: e.clientX, y: e.clientY }));
   };
+
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     return () => document.removeEventListener("mousemove", handleMouseMove);
   });
+
   return (
     <div
       className={`fixed pointer-events-none w-10 h-10 ${

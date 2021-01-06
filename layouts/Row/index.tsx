@@ -1,16 +1,18 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 
-const index = ({ children, className = "" }: IProps) => {
+const index = ({
+  children,
+  style = {},
+  className = "",
+}: HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div className={`relative w-full h-full flex flex-row p-4 ${className}`}>
+    <div
+      style={style}
+      className={`relative w-full flex flex-wrap flex-row p-4 ${className}`}
+    >
       {children}
     </div>
   );
 };
 
 export default index;
-
-interface IProps {
-  children: JSX.Element | JSX.Element[];
-  className?: string;
-}

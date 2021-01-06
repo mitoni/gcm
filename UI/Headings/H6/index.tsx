@@ -6,13 +6,13 @@ const index = React.forwardRef(
     ref: React.ForwardedRef<HTMLHeadingElement>
   ) => {
     return (
-      <h4
+      <h6
         ref={ref}
         {...rest}
-        className={`${className} font-medium text-lg mb-2`}
+        className={`${className} font-medium text-sm mb-2`}
       >
         {children}
-      </h4>
+      </h6>
     );
   }
 );

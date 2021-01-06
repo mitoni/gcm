@@ -4,21 +4,23 @@ const graphcmsEndpoint =
   "https://api-eu-central-1.graphcms.com/v2/ckiw3kw0i98o101xu1q72e4rd/master";
 
 export const request = async (query: string) => {
-  const response = await fetch(graphcmsEndpoint, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${graphcmsKey}`,
-    },
-    body: JSON.stringify({
-      query,
-    }),
-  });
-  return await response.json();
+  try {
+    const response = await fetch(graphcmsEndpoint, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${graphcmsKey}`,
+      },
+      body: JSON.stringify({
+        query,
+      }),
+    });
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
 };
 
 export const getData = async (query: string) => {
   const { data } = await request(query);
-  const realData = data[Object.keys(data)[0]];
-  if (realData instanceof Array && realData.length === 1) return realData[0];
-  return realData;
+  return data;
 };
