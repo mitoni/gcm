@@ -31,9 +31,11 @@ const index = ({ projects, homepage }: IProps) => {
           <Bubble key={i} project={dp} />
         ))}
       </div>
+
       <Col>
         <Description homepage={homepage} />
       </Col>
+
       <Col>
         <img
           className="z-0 w-full h-full max-h-screen object-contain"

@@ -17,7 +17,7 @@ const MenuItem = ({ children, path }: IProps) => {
           current === path ? "scale-100" : "scale-0"
         }`}
       />
-      <H4 style={{ mixBlendMode: "difference" }}>{children}</H4>
+      <H4>{children}</H4>
     </div>
   );
 };

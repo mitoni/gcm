@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
 import { mouseAtom } from "../../recoil/atoms";

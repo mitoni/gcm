@@ -22,6 +22,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           categories {
             color {
               css
+              rgba {
+                r
+                g
+                b
+                a
+              }
             }
           }
           name

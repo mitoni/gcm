@@ -4,9 +4,9 @@ import Cursor from "../../UI/Cursor";
 
 const index = ({ children }: IProps) => {
   return (
-    <div className="flex flex-row justify-start w-full h-full max-w-screen">
+    <div className="flex sm:flex-row flex-col justify-start w-full h-full max-w-screen">
       <Cursor />
-      <div className="w-24">
+      <div className="sm:w-24 h-24">
         <Navbar />
       </div>
       <div className="flex-1 min-h-screen">{children}</div>

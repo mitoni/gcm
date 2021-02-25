@@ -53,6 +53,8 @@ const Bubble = ({ project }) => {
     });
   };
 
+  console.log("project.categories", project.categories);
+
   return (
     <Link href={`/what-I-do/${getPathFromName(project?.name)}`}>
       <a
@@ -70,8 +72,11 @@ const Bubble = ({ project }) => {
             backgroundSize: "cover",
             filter: project?.categories.reduce(
               (acc: string, curr, i: number) => {
-                const col = curr.color.css;
-                acc += `drop-shadow(${i + 3}px ${i + 3}px 0px ${col}) `;
+                const { r, g, b } = curr.color.rgba;
+                console.log("r,g,b", r, g, b);
+                acc += `drop-shadow(${i + 5}px ${
+                  i + 5
+                }px 3px rgba(${r}, ${g}, ${b}, 0.4) `;
                 return acc;
               },
               ""

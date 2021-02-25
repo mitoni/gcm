@@ -8,7 +8,7 @@ const index = ({
   return (
     <div
       style={style}
-      className={`relative w-1/2 h-full flex flex-col p-2 ${className}`}
+      className={`relative w-full sm:w-1/2 h-auto sm:h-full flex flex-col p-2 ${className}`}
     >
       {children}
     </div>

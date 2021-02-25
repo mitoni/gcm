@@ -6,7 +6,10 @@ const index = ({
   ...rest
 }: React.HTMLAttributes<HTMLHeadingElement>) => {
   return (
-    <h2 {...rest} className={`${className} font-headline text-6xl mb-2`}>
+    <h2
+      {...rest}
+      className={`${className} font-headline text-5xl sm:text-6xl mb-4`}
+    >
       {children}
     </h2>
   );
