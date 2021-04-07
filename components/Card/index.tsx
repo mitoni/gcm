@@ -60,14 +60,14 @@ const index = ({ className = "", project }: IProps) => {
         <div
           className="relative w-full h-full flex flex-col items-center justify-center p-4"
           style={{
-            background: `linear-gradient(135deg, ${project.categories.map(
+            background: `linear-gradient(135deg, ${project.categories?.map(
               (c: any) => {
                 const _rgba: string = c.color.css.replace("rgb", "rgba");
                 const rgba =
                   _rgba.slice(0, _rgba.length - 1) +
                   ",0.15" +
                   _rgba.slice(_rgba.length - 1);
-                if (project.categories.length === 1) return `${rgba}, ${rgba}`;
+                if (project.categories?.length === 1) return `${rgba}, ${rgba}`;
                 return rgba;
               }
             )})`,
@@ -77,7 +77,7 @@ const index = ({ className = "", project }: IProps) => {
             ref={titleContainer}
             className="absolute w-full h-full flex flex-col items-center justify-center overflow-hidden p-2"
             style={{
-              background: `url(${project.cover.url})`,
+              background: `url(${project.cover?.url})`,
               backgroundSize: "cover",
             }}
           >
