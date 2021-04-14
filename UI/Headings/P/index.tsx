@@ -6,7 +6,7 @@ const index = ({
   ...rest
 }: React.HTMLAttributes<HTMLParagraphElement>) => {
   return (
-    <p {...rest} className={`${className} mb-2`}>
+    <p {...rest} className={`${className} mb-2`} style={{ minHeight: "1rem" }}>
       {children}
     </p>
   );

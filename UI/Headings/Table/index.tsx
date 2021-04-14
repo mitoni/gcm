@@ -6,7 +6,11 @@ const index = ({
   ...rest
 }: React.HTMLAttributes<HTMLTableElement>) => {
   return (
-    <table {...rest} className={`${className} table-auto w-full`}>
+    <table
+      {...rest}
+      className={`${className} table-auto w-full`}
+      style={{ minHeight: "1rem" }}
+    >
       {children}
     </table>
   );

@@ -7,9 +7,10 @@ const index = React.forwardRef(
   ) => {
     return (
       <h6
-        ref={ref}
         {...rest}
+        ref={ref}
         className={`${className} font-medium text-sm mb-2`}
+        style={{ minHeight: "1rem" }}
       >
         {children}
       </h6>

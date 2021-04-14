@@ -10,6 +10,7 @@ const index = React.forwardRef(
         ref={ref}
         {...rest}
         className={`${className} font-medium text-lg mb-2`}
+        style={{ minHeight: "1rem" }}
       >
         {children}
       </h4>

@@ -6,7 +6,12 @@ const index = React.forwardRef(
     ref: React.ForwardedRef<HTMLHeadingElement>
   ) => {
     return (
-      <h4 ref={ref} {...rest} className={`${className} text-2xl mb-2`}>
+      <h4
+        ref={ref}
+        {...rest}
+        className={`${className} text-2xl mb-2`}
+        style={{ minHeight: "1rem" }}
+      >
         {children}
       </h4>
     );

@@ -9,6 +9,7 @@ const index = ({
     <h2
       {...rest}
       className={`${className} font-headline text-5xl sm:text-6xl mb-4`}
+      style={{ minHeight: "1rem" }}
     >
       {children}
     </h2>
