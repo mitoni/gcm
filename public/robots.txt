@@ -1,0 +1,6 @@
+Sitemap: https://www.gregoriocm.it/api/sitemap
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
