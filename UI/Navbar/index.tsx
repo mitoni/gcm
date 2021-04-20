@@ -24,6 +24,10 @@ const index = () => {
         <MenuItem path="who-I-am">Who&nbsp;I&nbsp;am</MenuItem>
       </Hyperlink>
 
+      <Hyperlink href="/what-I-write" className="hidden sm:block">
+        <MenuItem path="what-I-write">What&nbsp;I&nbsp;write</MenuItem>
+      </Hyperlink>
+
       <Hyperlink href="/what-I-do" className="hidden sm:block">
         <MenuItem path="what-I-do">What&nbsp;I&nbsp;do</MenuItem>
       </Hyperlink>
@@ -77,6 +81,15 @@ const index = () => {
           }}
         >
           <MenuItem path="who-I-am">Who&nbsp;I&nbsp;am</MenuItem>
+        </Hyperlink>
+
+        <Hyperlink
+          href="/what-I-write"
+          onClick={() => {
+            setMobileOpen(false);
+          }}
+        >
+          <MenuItem path="what-I-write">What&nbsp;I&nbsp;write</MenuItem>
         </Hyperlink>
 
         <Hyperlink

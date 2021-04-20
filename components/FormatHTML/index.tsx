@@ -68,7 +68,7 @@ const index = ({ html, style, className = "" }: IProps) => {
         case "img":
           return (
             <img
-              className="max-h-screen-3/4 w-full object-contain mx-auto"
+              className="w-full object-contain mx-auto"
               src={node.attribs.src}
               title={node.attribs.title}
               alt={node.attribs.alt}
