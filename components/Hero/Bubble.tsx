@@ -73,10 +73,7 @@ const Bubble = ({ project }) => {
             filter: project?.categories.reduce(
               (acc: string, curr, i: number) => {
                 const { r, g, b } = curr.color.rgba;
-                console.log("r,g,b", r, g, b);
-                acc += `drop-shadow(${i + 5}px ${
-                  i + 5
-                }px 3px rgba(${r}, ${g}, ${b}, 0.4) `;
+                acc += `drop-shadow(0px 0px 30px rgba(${r}, ${g}, ${b}, 0.20) `;
                 return acc;
               },
               ""
