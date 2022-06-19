@@ -70,14 +70,16 @@ const Bubble = ({ project }) => {
             width: `${mult.current * 40 + 80}px`,
             backgroundImage: `url(${project?.cover?.url})`,
             backgroundSize: "cover",
-            filter: project?.categories.reduce(
-              (acc: string, curr, i: number) => {
-                const { r, g, b } = curr.color.rgba;
-                acc += `drop-shadow(0px 0px 30px rgba(${r}, ${g}, ${b}, 0.20) `;
-                return acc;
-              },
-              ""
-            ),
+            filter:
+              "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))",
+            // filter: project?.categories.reduce(
+            //   (acc: string, curr, i: number) => {
+            //     const { r, g, b } = curr.color.rgba;
+            //     acc += `drop-shadow(0px 0px 30px rgba(${r}, ${g}, ${b}, 0.20) `;
+            //     return acc;
+            //   },
+            //   ""
+            // ),
           }}
         />
       </a>
