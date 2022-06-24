@@ -53,8 +53,6 @@ const Bubble = ({ project }) => {
     });
   };
 
-  console.log("project.categories", project.categories);
-
   return (
     <Link href={`/what-I-do/${getPathFromName(project?.name)}`}>
       <a

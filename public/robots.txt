@@ -1,6 +1,3 @@
-Sitemap: https://www.gregoriocm.it/api/sitemap
-
+Sitemap: https://www.gregoriocm.it/sitemap.xml
 User-agent: *
 Allow: /*
-
-Disallow: /api/*
