@@ -25,7 +25,7 @@ const index = ({ projects, homepage }: IProps) => {
     <Row className="h-screen">
       <div
         ref={canvas}
-        className="absolute w-full h-full overflow-hidden pointer-events-none top-0 left-0"
+        className="fixed w-full h-full overflow-hidden pointer-events-none top-0 left-0 z-50"
       >
         {displayProjects.map((dp, i) => (
           <Bubble key={i} project={dp} />
@@ -38,7 +38,7 @@ const index = ({ projects, homepage }: IProps) => {
 
       <Col>
         <img
-          className="z-0 w-full h-full max-h-screen object-contain"
+          className="z-0 w-full sm:h-full h-auto max-h-screen object-contain"
           src={homepage?.cover.url}
         />
       </Col>

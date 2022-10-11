@@ -1,4 +1,4 @@
-import { merge, union, uniq } from "lodash";
+import { union } from "lodash";
 import { GetServerSidePropsContext } from "next";
 
 export const pickRandom = (data: any[]): any => {

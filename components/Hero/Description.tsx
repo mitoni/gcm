@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import anime, { AnimeTimelineInstance } from "animejs";
+import { useEffect, useRef, useState } from "react";
+import useScreenSize from "../../hooks/useScreenSize";
 import { Events, execute, listen, unlisten } from "../../lib/signals";
 import H2 from "../../UI/Headings/H2";
-import FormatHTML from "../FormatHTML";
-import anime, { AnimeTimelineInstance } from "animejs";
 import P from "../../UI/Headings/P";
+import FormatHTML from "../FormatHTML";
 
 const Description = ({ homepage }: IProps) => {
   const bio = useRef(null);
@@ -11,6 +12,7 @@ const Description = ({ homepage }: IProps) => {
   const anim = useRef<AnimeTimelineInstance>(null);
   const [title, setTitle] = useState<string>(null);
   const [description, setDescription] = useState<string>(null);
+  const { screenWidth } = useScreenSize();
 
   const handleSetProjectHome = (text: string[]) => {
     const [_title, _description] = text;
@@ -78,7 +80,11 @@ const Description = ({ homepage }: IProps) => {
 
   return (
     <div className="cursor-default w-full h-full flex flex-col justify-center items-center">
-      <div className="absolute" ref={bio} onMouseEnter={handleMouseEnter}>
+      <div
+        className="absolute"
+        ref={bio}
+        {...(screenWidth > 640 && { onMouseEnter: handleMouseEnter })}
+      >
         <FormatHTML html={homepage?.text.html} />
       </div>
       <div ref={desc}>
